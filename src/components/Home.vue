@@ -3,7 +3,7 @@
     Home组件
     <button @click="handle">鉴权测试</button>
     <div>
-      <el-button type="primary" round @click="logout">退出</el-button>
+      <el-button type="info" round @click="logout">退出</el-button>
     </div>
   </div>
 </template>
