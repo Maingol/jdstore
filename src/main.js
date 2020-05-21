@@ -4,9 +4,13 @@ import router from './router'
 import './plugins/element.js'
 // 导入全局样式表
 import './assets/css/global.css'
+// 导入阿里图标库
+import './assets/iconfont/iconfont.css'
 
 // 导入并配置axios
 import axios from 'axios'
+
+import './plugins/iview.js'
 // 配置axios请求的基准路径
 axios.defaults.baseURL = 'http://127.0.0.1:8700/api/private/v1/'
 
@@ -32,7 +36,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(
   response => {
     // 未登录或会话已过期
-    if (response.data.meta.status === 401) {
+    if (response.data.meta !== undefined && response.data.meta.status === 401) {
       // 重定向到登录页
       router.push('/login')
       Vue.prototype.$message.error('您没有登陆或登陆时效已过期,请重新登陆')
@@ -51,6 +55,7 @@ axios.interceptors.response.use(
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
+Vue.config.devtools = true
 
 new Vue({
   router,

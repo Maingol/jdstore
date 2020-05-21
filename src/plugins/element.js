@@ -1,9 +1,35 @@
 import Vue from 'vue'
-import { Button, Form, FormItem, Input, Message } from 'element-ui'
+import {
+  Button, Form, FormItem, Input, Message,
+  Container, Header, Aside, Main,
+  Menu, MenuItem, Submenu,
+  Breadcrumb, BreadcrumbItem, Card,
+  Row, Col, Table, TableColumn, Switch,
+  Pagination, Tooltip, Dialog, MessageBox
+} from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
-/* $message是自定义的属性 */
+Vue.use(Container)
+Vue.use(Header)
+Vue.use(Aside)
+Vue.use(Main)
+Vue.use(Menu)
+Vue.use(MenuItem)
+Vue.use(Submenu)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Switch)
+Vue.use(Pagination)
+Vue.use(Tooltip)
+Vue.use(Dialog)
+/* $message和$confirm是自定义的属性 */
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm

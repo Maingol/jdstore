@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "element-ui": "^2.4.5",
+    "view-design": "^4.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6"
   },
@@ -30,6 +31,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "less-loader": "^6.1.0",
     "vue-cli-plugin-element": "^1.0.1",
+    "vue-cli-plugin-iview": "^2.0.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

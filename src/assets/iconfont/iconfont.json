@@ -1,0 +1,44 @@
+{
+  "id": "1818616",
+  "name": "jdStore",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7707636",
+      "name": "baobiao",
+      "font_class": "baobiao",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "10202852",
+      "name": "danju",
+      "font_class": "danju",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "9421931",
+      "name": "商品",
+      "font_class": "shangpin",
+      "unicode": "e6f5",
+      "unicode_decimal": 59125
+    },
+    {
+      "icon_id": "312606",
+      "name": "users",
+      "font_class": "users",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "544492",
+      "name": "cube",
+      "font_class": "cube",
+      "unicode": "e72c",
+      "unicode_decimal": 59180
+    }
+  ]
+}
