@@ -2,6 +2,8 @@
 html, body, #app {
     height: 100%;
     color: #222222;
+    /* 设置屏幕最小宽度为1366，不足1366则调出横向滑动条来显示 */
+    min-width: 1366px;
 }
 
 .el-breadcrumb {

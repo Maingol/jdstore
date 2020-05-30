@@ -5,7 +5,8 @@ import {
   Menu, MenuItem, Submenu,
   Breadcrumb, BreadcrumbItem, Card,
   Row, Col, Table, TableColumn, Switch,
-  Pagination, Tooltip, Dialog, MessageBox
+  Pagination, Tooltip, Dialog, MessageBox,
+  Tag, Tree, Select, Option
 } from 'element-ui'
 
 Vue.use(Button)
@@ -30,6 +31,10 @@ Vue.use(Switch)
 Vue.use(Pagination)
 Vue.use(Tooltip)
 Vue.use(Dialog)
+Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Select)
+Vue.use(Option)
 /* $message和$confirm是自定义的属性 */
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
