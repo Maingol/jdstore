@@ -41,6 +41,10 @@ axios.interceptors.response.use(
       router.push('/login')
       Vue.prototype.$message.error('您没有登陆或登陆时效已过期,请重新登陆')
     }
+    if (response.data.meta !== undefined && response.data.meta.status === 403) {
+      // 用户无权访问该资源
+      Vue.prototype.$message.error('权限不足')
+    }
     return response.data
   },
   error => {
