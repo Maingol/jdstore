@@ -3,7 +3,8 @@ html, body, #app {
     height: 100%;
     color: #222222;
     /* 设置屏幕最小宽度为1366，不足1366则调出横向滑动条来显示 */
-    min-width: 1366px;
+    min-width: 1080px;
+    /*min-width: 100%;*/
 }
 
 .el-breadcrumb {
@@ -23,4 +24,9 @@ html, body, #app {
 
 .el-pagination {
     margin-top: 15px;
+}
+
+/* 解决级联选择器高度溢出问题 */
+.el-cascader-menu {
+    height: 300px;
 }

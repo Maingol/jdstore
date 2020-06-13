@@ -11,6 +11,10 @@ import './assets/iconfont/iconfont.css'
 import axios from 'axios'
 
 import './plugins/iview.js'
+
+// 导入用于表格的树形控件
+import TreeTable from 'vue-table-with-tree-grid'
+
 // 配置axios请求的基准路径
 axios.defaults.baseURL = 'http://127.0.0.1:8700/api/private/v1/'
 
@@ -60,6 +64,9 @@ Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
+
+// 注册用于表格的树形控件
+Vue.component('tree-table', TreeTable)
 
 new Vue({
   router,

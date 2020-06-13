@@ -6,7 +6,7 @@ import {
   Breadcrumb, BreadcrumbItem, Card,
   Row, Col, Table, TableColumn, Switch,
   Pagination, Tooltip, Dialog, MessageBox,
-  Tag, Tree, Select, Option
+  Tag, Tree, Select, Option, Cascader
 } from 'element-ui'
 
 Vue.use(Button)
@@ -35,6 +35,7 @@ Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Cascader)
 /* $message和$confirm是自定义的属性 */
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
