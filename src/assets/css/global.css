@@ -31,3 +31,19 @@ html, body, #app {
 .el-cascader-menu {
     height: 300px;
 }
+
+.el-steps {
+    /* 距离上、下15px,左右0px */
+    margin: 15px 0;
+}
+
+/* 调整步骤条中文字的大小 */
+.el-step__title {
+    font-size: 13px;
+}
+
+/* 富文本编辑器的样式 */
+.ql-editor {
+    min-height: 500px;
+    max-height: 500px;
+}
