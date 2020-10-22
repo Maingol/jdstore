@@ -40,19 +40,13 @@
           </template>
         </el-table-column>
         <el-table-column label="操作" width="120">
-          <!--<template slot-scope="scope">
-            &lt;!&ndash; 修改按钮 &ndash;&gt;
-            <el-button type="primary" icon="el-icon-edit" size="mini"
-                       @click="activeUpdateDialog(scope.row.id)"></el-button>
-            &lt;!&ndash; 删除按钮 &ndash;&gt;
-            <el-button type="danger" icon="el-icon-delete" size="mini"
-                       @click="openDeleteMsgBox(scope.row.id)"></el-button>
-          </template>-->
-          <template>
+          <template slot-scope="scope">
             <!-- 修改按钮 -->
-            <el-button type="primary" icon="el-icon-edit" size="mini"></el-button>
+            <el-button type="primary" icon="el-icon-edit" size="mini"
+                       @click="openUpdateGoodDialog(scope.row)"></el-button>
             <!-- 删除按钮 -->
-            <el-button type="danger" icon="el-icon-delete" size="mini"></el-button>
+            <el-button type="danger" icon="el-icon-delete" size="mini"
+                       @click="deleteGoodById(scope.row)"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -68,6 +62,36 @@
         :total="total">
       </el-pagination>
     </el-card>
+    <!-- 对话框区域 -->
+    <!-- 点击编辑商品按钮弹出的对话框 -->
+    <!-- 编辑角色的对话框 -->
+    <!-- 此对话框关闭后不必清空数据，也就不必设置关闭后触发的函数@close="" -->
+    <el-dialog
+      title="编辑商品"
+      :visible.sync="updateGoodDialogVisible"
+      width="80%">
+      <div class="formBox">
+        <!-- 编辑商品表单区域 -->
+        <el-form class="updateGood_form" :rules="updateGoodFormRules" :model="updateGoodForm" ref="updateGoodFormRef">
+          <!-- 商品名称 -->
+          <el-form-item label="商品名称" prop="goods_name" label-width="80px">
+            <el-input v-model="updateGoodForm.goods_name"></el-input>
+          </el-form-item>
+          <!-- 商品价格 -->
+          <el-form-item label="商品价格" prop="goods_price" label-width="80px">
+            <el-input v-model="updateGoodForm.goods_price"></el-input>
+          </el-form-item>
+          <!-- 商品重量 -->
+          <el-form-item label="商品重量" prop="goods_weight" label-width="80px">
+            <el-input v-model="updateGoodForm.goods_weight"></el-input>
+          </el-form-item>
+        </el-form>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="updateGoodDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="updateGoodInfo">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -85,7 +109,29 @@ export default {
       // 获取商品列表时得到的结果条数
       total: null,
       // 商品数据列表
-      goodsList: []
+      goodsList: [],
+      /* 控制编辑商品的对话框关闭与否 */
+      updateGoodDialogVisible: false,
+      /* 编辑商品对话框中表单绑定的数据 */
+      updateGoodForm: {
+        goods_name: '',
+        goods_price: 0,
+        goods_weight: 0
+      },
+      /* 这是编辑商品表单的验证规则对象 */
+      updateGoodFormRules: {
+        goods_name: [
+          { required: true, message: '请输入商品名称', trigger: 'blur' }
+        ],
+        goods_price: [
+          { required: true, message: '请输入商品价格', trigger: 'blur' }
+        ],
+        goods_weight: [
+          { required: true, message: '请输入商品重量', trigger: 'blur' }
+        ]
+      },
+      /* 记录准备更新的商品的id */
+      updateGoodId: null
     }
   },
   created () {
@@ -120,11 +166,69 @@ export default {
     },
     goAddPage () {
       this.$router.push('add-goods')
+    },
+    // 点击修改商品按钮后触发的函数
+    openUpdateGoodDialog (row) {
+      // 打开修改商品的对话框
+      this.updateGoodDialogVisible = true
+      // 将待修改商品的信息默认显示在当前修改商品输入框
+      this.updateGoodForm.goods_name = row.goods_name
+      this.updateGoodForm.goods_price = row.goods_price
+      this.updateGoodForm.goods_weight = row.goods_weight
+      // 记录待修改商品的id
+      this.updateGoodId = row.goods_id
+    },
+    /* 点击编辑角色对话框中确认按钮后触发的函数 */
+    async updateGoodInfo () {
+      this.$refs.updateGoodFormRef.validate(async valid => {
+        if (!valid) {
+          // 预校验未能通过
+          return
+        }
+        // 预校验通过，发起axios请求
+        console.log(this.updateGoodForm)
+        const res = await this.$http.put('goods/' + this.updateGoodId, this.updateGoodForm)
+        if (res.meta.status !== 200) {
+          return this.$message.error('更新商品信息失败')
+        }
+        // 给出成功提示
+        this.$message.success('更新商品信息成功')
+        // 隐藏对话框
+        this.updateGoodDialogVisible = false
+        // 重新请求商品列表
+        this.getGoodsList()
+      })
+    },
+    /* 点击删除商品按钮后触发的函数 */
+    deleteGoodById (row) {
+      this.$confirm('此操作将删除该商品, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async () => {
+        const res = await this.$http.delete(`goods/${row.goods_id}`)
+        if (res.meta.status !== 200) {
+          return this.$message.error('删除商品失败')
+        }
+        this.$message.success('删除商品成功')
+        this.getGoodsList()
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-
+  .formBox {
+    display: flex;
+    justify-content: center;
+  }
+  .updateGood_form{
+    width: 80%;
+  }
 </style>

@@ -318,7 +318,7 @@ export default {
       this.updateCateForm.cat_name = row.cat_name
       // 记录当前修改分类的id
       this.updateCateId = row.cat_id
-      this.row = row
+      // this.row = row
     },
     // 点击修改分类对话框中的确认按钮触发的函数
     async updateCate () {
