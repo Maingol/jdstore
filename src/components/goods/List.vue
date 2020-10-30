@@ -9,15 +9,8 @@
 
     <!-- 卡片视图区域 -->
     <el-card>
-      <!-- 添加用户和搜索用户区域 -->
+      <!-- 添加商品和搜索商品区域 -->
       <el-row :gutter="30">
-        <!--
-        <el-col :span="7">
-          <el-input @clear="getUserList" placeholder="请输入要查询的用户" v-model="queryInfo.query" clearable>
-            <el-button slot="append" icon="el-icon-search" @click="getUserList"></el-button>
-          </el-input>
-        </el-col>
-        -->
         <el-col :span="7">
           <el-input @clear="getGoodsList" placeholder="请输入内容" v-model="queryInfo.query" clearable>
             <el-button slot="append" icon="el-icon-search" @click="getGoodsList"></el-button>
@@ -28,7 +21,7 @@
         </el-col>
       </el-row>
 
-      <!-- 用户列表区域 -->
+      <!-- 商品列表区域 -->
       <el-table :data="goodsList" stripe border>
         <el-table-column type="index"></el-table-column>
         <el-table-column prop="goods_name" label="商品名称"></el-table-column>
@@ -154,14 +147,14 @@ export default {
     handleSizeChange (val) {
       // 更新请求参数中的每页条数
       this.queryInfo.pagesize = val
-      // 发送请求更新用户列表userlist
+      // 发送请求更新商品列表goodsList
       this.getGoodsList()
     },
     // 当前页发生变化时触发的函数，当前页会传递给形参val
     handleCurrentChange (val) {
       // 更新请求参数中的当前页
       this.queryInfo.pagenum = val
-      // 发送请求更新用户列表userlist
+      // 发送请求更新商品列表goodsList
       this.getGoodsList()
     },
     goAddPage () {
@@ -186,7 +179,6 @@ export default {
           return
         }
         // 预校验通过，发起axios请求
-        console.log(this.updateGoodForm)
         const res = await this.$http.put('goods/' + this.updateGoodId, this.updateGoodForm)
         if (res.meta.status !== 200) {
           return this.$message.error('更新商品信息失败')
