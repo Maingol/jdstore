@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- 模板字符串的语法 -->
     <title><%= htmlWebpackPlugin.options.isProd ? '' : 'dev - '%>电商后台管理系统</title>
+
+    <!-- 只有当前项目处于发布阶段时，才采用引用CDN资源的方式；如果是开发阶段，则依然采用import语句导入资源，不使用CDN资源 -->
+    <% if(htmlWebpackPlugin.options.isProd){ %>
     <!-- nprogress 的样式表文件 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css">
     <!-- 富文本编辑器 的样式表文件 -->
@@ -26,6 +30,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.4/dist/vue-quill-editor.js"></script>
     <!-- element-ui 的 js 文件 -->
     <script src="https://cdn.staticfile.org/element-ui/2.8.2/index.js"></script>
+
+    <% } %>
   </head>
   <body>
     <noscript>
