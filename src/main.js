@@ -10,8 +10,6 @@ import './assets/iconfont/iconfont.css'
 // 导入并配置axios
 import axios from 'axios'
 
-import './plugins/iview.js'
-
 // 导入用于表格的树形控件
 import TreeTable from 'vue-table-with-tree-grid'
 
@@ -22,13 +20,6 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
-
-// 设置浏览器标题
-Vue.directive('title', {
-  inserted: function (el, binding) {
-    document.title = el.dataset.title
-  }
-})
 
 // 配置axios请求的基准路径
 axios.defaults.baseURL = 'http://127.0.0.1:8700/api/private/v1/'
