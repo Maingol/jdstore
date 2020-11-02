@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>vue_shop</title>
+    <title><%= htmlWebpackPlugin.options.isProd ? '' : 'dev - '%>电商后台管理系统</title>
     <!-- nprogress 的样式表文件 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css">
     <!-- 富文本编辑器 的样式表文件 -->
