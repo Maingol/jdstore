@@ -69,8 +69,7 @@ error => {
     // 服务端异常
   }
   return Promise.reject(error) // 返回接口返回的错误信息
-}
-)
+})
 
 // 把axios包挂载到Vue的原型对象上，这样就只需导入一次axios包之后每个组件中就都可以发送axios请求了
 Vue.prototype.$http = axios
