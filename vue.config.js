@@ -4,6 +4,11 @@ module.exports = {
     disableHostCheck: true
   },
 
+  // 删除打包时生成的那些js.map文件
+  /* 参考网址：https://blog.csdn.net/Future1994/article/details/84943245?utm_medium=
+  distribute.pc_relevant.none-task-blog-title-6&spm=1001.2101.3001.4242 */
+  productionSourceMap: process.env.NODE_ENV !== 'production',
+
   chainWebpack: config => {
     // 产品发布阶段
     config.when(process.env.NODE_ENV === 'production', config => {
