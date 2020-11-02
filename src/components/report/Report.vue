@@ -66,7 +66,6 @@ export default {
     if (res.meta.status !== 200) {
       return this.$message.error('获取折线图数据失败')
     }
-    console.log(res)
     // 4. 准备数据和配置项
     // 直接展示服务器返回的数据会缺少鼠标跟随效果，
     // 所以需要将服务器返回的数据与接口文档中提供的数据进行合并。
