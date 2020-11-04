@@ -44,7 +44,7 @@ export default {
     return {
       /* 这是登陆表单的数据绑定对象 */
       loginForm: {
-        userName: 'admin',
+        userName: '',
         passWord: ''
       },
       /* 这是登陆表单的验证规则对象 */

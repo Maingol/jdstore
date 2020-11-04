@@ -26,7 +26,8 @@ import NProgress from 'nprogress'
 // import 'nprogress/nprogress.css'
 
 // 配置axios请求的基准路径
-axios.defaults.baseURL = 'http://127.0.0.1:8700/api/private/v1/'
+// axios.defaults.baseURL = 'http://127.0.0.1:8700/api/private/v1/'
+axios.defaults.baseURL = 'http://47.93.238.236:21024/api/private/v1/'
 
 // 关于Vue配置请求拦截器和响应拦截器，
 // 参考https://www.cnblogs.com/Jack-cx/p/12081745.html
