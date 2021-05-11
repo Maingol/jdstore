@@ -13,7 +13,7 @@
     "echarts": "^4.9.0",
     "element-china-area-data": "^5.0.2",
     "element-ui": "^2.4.5",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "view-design": "^4.0.0",
     "vue": "^2.6.11",
